@@ -26,8 +26,11 @@ module.exports = function(grunt) {
     var options = this.options({
       encoding: 'utf8',
       algorithm: 'md5',
-      length: 8
+      length: 8,
+      onComplete: function(){},
+      onStep: function(){}
     });
+    var revFiles = [];
 
     this.files.forEach(function(filePair) {
       filePair.src.forEach(function(f) {
@@ -37,13 +40,16 @@ module.exports = function(grunt) {
           renamed = [prefix, path.basename(f)].join('.'),
           outPath = path.resolve(path.dirname(f), renamed);
 
+        revFiles.push([f, outPath]);
+        options.onStep(f, outPath);
+        
         grunt.verbose.ok().ok(hash);
         fs.renameSync(f, outPath);
         grunt.log.write(f + ' ').ok(renamed);
 
       });
     });
-
+    options.onComplete(revFiles);
   });
 
 };
