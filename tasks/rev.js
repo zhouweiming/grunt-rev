@@ -40,8 +40,8 @@ module.exports = function(grunt) {
           renamed = [prefix, path.basename(f)].join('.'),
           outPath = path.resolve(path.dirname(f), renamed);
 
-        revFiles.push([f, outPath]);
-        options.onStep(f, outPath);
+        revFiles.push([f, f.substring(0, f.lastIndexOf(path.basename(f))) + renamed]);
+        options.onStep(revFiles[revFiles.length - 1]);
         
         grunt.verbose.ok().ok(hash);
         fs.renameSync(f, outPath);
