@@ -27,8 +27,8 @@ module.exports = function(grunt) {
       encoding: 'utf8',
       algorithm: 'md5',
       length: 8,
-      onComplete: function(){},
-      onStep: function(){}
+      onComplete: function() {},
+      onStep: function() {}
     });
     var revFiles = [];
 
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 
         revFiles.push([f, f.substring(0, f.lastIndexOf(path.basename(f))) + renamed]);
         options.onStep(revFiles[revFiles.length - 1]);
-        
+
         grunt.verbose.ok().ok(hash);
         fs.renameSync(f, outPath);
         grunt.log.write(f + ' ').ok(renamed);
