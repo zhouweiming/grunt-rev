@@ -27,6 +27,7 @@ module.exports = (grunt) => {
       encoding: 'utf8',
       algorithm: 'md5',
       length: 8,
+      basename: true,
       onComplete() {
         //one arg eg: [ [ source_file_path, dist_file_path ], ... ]
       },
@@ -42,7 +43,7 @@ module.exports = (grunt) => {
 
         let hash = md5(f, options.algorithm, 'hex', options.encoding),
           prefix = hash.slice(0, options.length),
-          renamed = [prefix, path.basename(f)].join('.'),
+          renamed = [prefix, options.basename ? path.basename(f) : path.extname(f)].join('.'),
           outPath = path.resolve(path.dirname(f), renamed);
 
         let current = [f, f.substring(0, f.lastIndexOf(path.basename(f))) + renamed];
