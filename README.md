@@ -9,7 +9,7 @@ npm install zhowweiming/grunt-rev --save-dev
 
 forked from [cbas/grunt-rev](https://github.com/cbas/grunt-rev)，想看原始配置的，可以看这里[cbas/grunt-rev](https://github.com/cbas/grunt-rev)。
 
-仅在原始配置的基础上做了两处修改：
+仅做了两处修改：
 
 1. 添加了三个配置：`options.basename`、`options.onStep`、`options.onComplete`。
 2. 调整了下`package.json`里面的`devDependencies`，以便能跑通`npm test`，方便测试。
