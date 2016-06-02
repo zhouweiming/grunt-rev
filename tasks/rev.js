@@ -29,10 +29,10 @@ module.exports = (grunt) => {
       length: 8,
       basename: true,
       onComplete() {
-        //one arg eg: [ [ source_file_path, dist_file_path ], ... ]
+        //one arg eg: [ [ "../../public/js/main.js", "../../public/js/f673jjwe.main.js" ], ... ]
       },
       onStep() {
-        //two args eg: source_file_path, dist_file_path
+        //two args eg: "../../public/js/main.js", "../../public/js/f673jjwe.main.js"
 
       }
     });
