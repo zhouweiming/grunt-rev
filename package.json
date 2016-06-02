@@ -1,7 +1,8 @@
 {
-  "name": "grunt-rev",
+  "name": "zhouweiming/grunt-rev",
   "description": "Static file asset revisioning through content hashing",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "forked": "https://github.com/cbas/grunt-rev",
   "homepage": "https://github.com/zhouweiming/grunt-rev",
   "author": {
     "name": "zhouweiming",
@@ -22,7 +23,7 @@
   ],
   "main": "Gruntfile.js",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 6.0.0"
   },
   "scripts": {
     "test": "grunt test"
