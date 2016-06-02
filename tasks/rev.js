@@ -43,7 +43,7 @@ module.exports = (grunt) => {
 
         let hash = md5(f, options.algorithm, 'hex', options.encoding),
           prefix = hash.slice(0, options.length),
-          renamed = [prefix, options.basename ? path.basename(f) : path.extname(f)].join('.'),
+          renamed = [prefix, options.basename ? path.basename(f) : path.extname(f)].join(options.basename ? "." : ""),
           outPath = path.resolve(path.dirname(f), renamed);
 
         let current = [f, f.substring(0, f.lastIndexOf(path.basename(f))) + renamed];
