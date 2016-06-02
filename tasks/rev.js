@@ -8,40 +8,46 @@
 
 'use strict';
 
-var fs = require('fs'),
+let fs = require('fs'),
   path = require('path'),
   crypto = require('crypto');
 
-module.exports = function(grunt) {
+module.exports = (grunt) => {
 
-  function md5(filepath, algorithm, encoding, fileEncoding) {
-    var hash = crypto.createHash(algorithm);
-    grunt.log.verbose.write('Hashing ' + filepath + '...');
+  let md5 = (filepath, algorithm, encoding, fileEncoding) => {
+    let hash = crypto.createHash(algorithm);
+    grunt.log.verbose.write(`Hashing ${filepath}...`);
     hash.update(grunt.file.read(filepath), fileEncoding);
     return hash.digest(encoding);
   }
 
   grunt.registerMultiTask('rev', 'Prefix static asset file names with a content hash', function() {
 
-    var options = this.options({
+    let options = this.options({
       encoding: 'utf8',
       algorithm: 'md5',
       length: 8,
-      onComplete: function() {},
-      onStep: function() {}
+      onComplete() {
+        //one arg eg: [ [ source_file_path, dist_file_path ], ... ]
+      },
+      onStep() {
+        //two args eg: source_file_path, dist_file_path
+
+      }
     });
-    var revFiles = [];
+    let revFiles = [];
 
-    this.files.forEach(function(filePair) {
-      filePair.src.forEach(function(f) {
+    this.files.forEach((filePair) => {
+      filePair.src.forEach((f) => {
 
-        var hash = md5(f, options.algorithm, 'hex', options.encoding),
+        let hash = md5(f, options.algorithm, 'hex', options.encoding),
           prefix = hash.slice(0, options.length),
           renamed = [prefix, path.basename(f)].join('.'),
           outPath = path.resolve(path.dirname(f), renamed);
 
-        revFiles.push([f, f.substring(0, f.lastIndexOf(path.basename(f))) + renamed]);
-        options.onStep(revFiles[revFiles.length - 1]);
+        let current = [f, f.substring(0, f.lastIndexOf(path.basename(f))) + renamed];
+        revFiles.push(current);
+        options.onStep(...current);
 
         grunt.verbose.ok().ok(hash);
         fs.renameSync(f, outPath);

@@ -52,7 +52,15 @@ module.exports = function(grunt) {
       },
       international_options: {
         options: {
-          encoding: 'utf8'
+          encoding: 'utf8',
+          algorithm: "md5",
+          length: 8,
+          onStep(_source, _dist) {
+            console.info(_source, _dist);
+          },
+          onComplete(_files) {
+            console.info(_files);
+          }
         },
         src: ['tmp/international.txt']
       },
