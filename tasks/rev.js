@@ -33,7 +33,6 @@ module.exports = (grunt) => {
       },
       onStep() {
         //two args eg: "../../public/js/main.js", "../../public/js/f673jjwe.main.js"
-
       }
     });
     let revFiles = [];
