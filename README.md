@@ -4,7 +4,7 @@
 [![Project Status: Unsupported - The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](http://www.repostatus.org/badges/latest/unsupported.svg)](http://www.repostatus.org/#unsupported)
 
 ```bash
-npm install zhowweiming/grunt-rev --save-dev
+npm install git://github.com/zhouweiming/grunt-rev.git --save-dev
 ```
 
 forked from [cbas/grunt-rev](https://github.com/cbas/grunt-rev)，想看原始配置的，可以看这里[cbas/grunt-rev](https://github.com/cbas/grunt-rev)。
