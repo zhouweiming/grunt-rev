@@ -1,5 +1,5 @@
 {
-  "name": "zhouweiming/grunt-rev",
+  "name": "grunt-rev",
   "description": "Static file asset revisioning through content hashing",
   "version": "0.1.1",
   "forked": "https://github.com/cbas/grunt-rev",
